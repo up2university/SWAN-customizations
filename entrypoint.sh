@@ -16,7 +16,7 @@ cp sso_config/attribute-map.xml /etc/shibboleth/attribute-map.xml
 sed "s/%%%HOSTNAME%%%/${HOSTNAME}/" sso_config/shibboleth2.xml.template > sso_config/shibboleth2.xml
 cp sso_config/shibboleth2.xml /etc/shibboleth/shibboleth2.xml
 #sed -i "s/%%%SHIBBOLETH_AUTHENTICATOR_CLASS%%%/ssotoldap_authenticator.ssotoldap_user_auth.SSOUserAuthenticator/" /srv/jupyterhub/jupyterhub_config.py
-sed -i "s/%%%SHIBBOLETH_AUTHENTICATOR_CLASS%%%/jhub_remote_user_authenticator.remote_user_auth.RemoteUserAuthenticator/" /srv/jupyterhub/jupyterhub_config.py
+sed -i "s/%%%SHIBBOLETH_AUTHENTICATOR_CLASS%%%/ssoremoteuser_authenticator.sso_remote_user_auth.RemoteUserAuthenticator/" /srv/jupyterhub/jupyterhub_config.py
 
 
 echo "Done"
