@@ -5,9 +5,9 @@ echo ""
 echo "Applying customizations for Up2U..."
 
 ### 1. Put in place the Up2U logo
-echo "  .Logo ..."
-mv /srv/jupyterhub/logo/logo_swan_cloudhisto.png /srv/jupyterhub/logo/logo_swan_cloudhisto.png.original
-cp up2u_logo.png /srv/jupyterhub/logo/logo_swan_cloudhisto.png
+#echo "  .Logo ..."
+#mv /srv/jupyterhub/logo/logo_swan_cloudhisto.png /srv/jupyterhub/logo/logo_swan_cloudhisto.png.original
+#cp up2u_logo.png /srv/jupyterhub/logo/logo_swan_cloudhisto.png
 
 ### 2. Set Up2U Single Sign-On paramters
 # NOTE: Please select 'shibboleth' as authentication method ('AUTH_TYPE') for jupyterhub Docker image v0.6 and later
