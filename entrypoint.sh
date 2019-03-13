@@ -18,6 +18,8 @@ cp sso_config/shibboleth2.xml /etc/shibboleth/shibboleth2.xml
 sed -i "s/%%%SHIBBOLETH_AUTHENTICATOR_CLASS%%%/ssotoldap_authenticator.ssotoldap_user_auth.SSOUserAuthenticator/" /srv/jupyterhub/jupyterhub_config.py
 ###sed -i "s/%%%SHIBBOLETH_AUTHENTICATOR_CLASS%%%/ssoremoteuser_authenticator.sso_remote_user_auth.RemoteUserAuthenticator/" /srv/jupyterhub/jupyterhub_config.py
 
+### 3. Add tracking code
+sed -i "s/<\/body>/<script type=\"application\/javascript\" src=\"https:\/\/cdn.test.up2university.eu\/scripts\/matomo-test.js\"><\/script><\/body>/" /srv/jupyterhub/jh_gitlab/templates/page.html
 
 echo "Done"
 echo ""
