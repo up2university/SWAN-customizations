@@ -22,7 +22,7 @@ sed -i "s/%%%SHIBBOLETH_AUTHENTICATOR_CLASS%%%/ssotoldap_authenticator.ssotoldap
 sed -i "s/<\/body>/<script type=\"application\/javascript\" src=\"https:\/\/cdn.test.up2university.eu\/scripts\/matomo-test.js\"><\/script><\/body>/" /srv/jupyterhub/jh_gitlab/templates/page.html
 
 ### 4. Show a meaninfull message when users are denied starting SWAN 
-echo "{% extends \"error.html\" %}{% block error_detail %}<p>You don't seem to have permission to use SWAN.</p><p>Did you create a CERNBox account? <a href=\"https://cernbox.test.up2university.eu\">You need to do it first.</a></p>{% endblock %}" > /srv/jupyterhub/jh_gitlab/templates/403.html
+echo "{% extends \"error.html\" %}{% block error_detail %}<p>You don't seem to have permission to use SWAN.</p><p>Did you create a CERNBox account? <a href=\"https://$CERNBOXGATEWAY_HOSTNAME\">You need to do it first.</a></p>{% endblock %}" > /srv/jupyterhub/jh_gitlab/templates/403.html
 
 echo "Done"
 echo ""
