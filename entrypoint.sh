@@ -19,7 +19,8 @@ sed -i "s/%%%SHIBBOLETH_AUTHENTICATOR_CLASS%%%/ssotoldap_authenticator.ssotoldap
 ###sed -i "s/%%%SHIBBOLETH_AUTHENTICATOR_CLASS%%%/ssoremoteuser_authenticator.sso_remote_user_auth.RemoteUserAuthenticator/" /srv/jupyterhub/jupyterhub_config.py
 
 ### 3. Add tracking code
-sed -i "s/<\/body>/<script type=\"application\/javascript\" src=\"https:\/\/cdn.test.up2university.eu\/scripts\/matomo-test.js\"><\/script><\/body>/" /srv/jupyterhub/jh_gitlab/templates/page.html
+sed -i "s|</body>|<script type=\"application/javascript\" src=\"$TRACKING_URL\"></script></body>|" /srv/jupyterhub/jh_gitlab/templates/page.html
+sed -i "s|c.CERNSpawner.extra_env = dict(|c.CERNSpawner.extra_env = dict(TRACKING_URL=\"$TRACKING_URL\",|" /srv/jupyterhub/jupyterhub_config.py
 
 ### 4. Show a meaninfull message when users are denied starting SWAN 
 echo "{% extends \"error.html\" %}{% block error_detail %}<p>You don't seem to have permission to use SWAN.</p><p>Did you create a CERNBox account? <a href=\"https://$CERNBOXGATEWAY_HOSTNAME\">You need to do it first.</a></p>{% endblock %}" > /srv/jupyterhub/jh_gitlab/templates/403.html
