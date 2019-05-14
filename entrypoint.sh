@@ -25,6 +25,12 @@ sed -i "s|c.CERNKubeSpawner.extra_env = dict(|c.CERNKubeSpawner.extra_env = dict
 ### 4. Show a meaninfull message when users are denied starting SWAN 
 echo "{% extends \"error.html\" %}{% block error_detail %}<p>You don't seem to have permission to use SWAN.</p><p>Did you create a CERNBox account? <a href=\"https://$CERNBOXGATEWAY_HOSTNAME\">You need to do it first.</a></p>{% endblock %}" > /srv/jupyterhub/jh_gitlab/templates/403.html
 
+### 5. Set limits and guarantees on resources
+sed -i "s|available_memory = \[\"8\", \"10\"\]|available_memory = \[\"3\"\]|" /srv/jupyterhub/jupyterhub_config.py
+sed -i "s|name=\"memory\" value=\"8\"|name=\"memory\" value=\"3\"|" /srv/jupyterhub/jupyterhub_form.html
+echo "c.SwanSpawner.cpu_guarantee = 0.5" >> /srv/jupyterhub/jupyterhub_config.py
+echo "c.SwanSpawner.mem_guarantee = \"1G\"" >> /srv/jupyterhub/jupyterhub_config.py
+
 echo "Done"
 echo ""
 
