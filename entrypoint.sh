@@ -31,6 +31,9 @@ sed -i "s|name=\"memory\" value=\"8\"|name=\"memory\" value=\"3\"|" /srv/jupyter
 echo "c.SwanSpawner.cpu_guarantee = 0.5" >> /srv/jupyterhub/jupyterhub_config.py
 echo "c.SwanSpawner.mem_guarantee = \"1G\"" >> /srv/jupyterhub/jupyterhub_config.py
 
+### 6. Spawn user sessions in different k8s namespace
+sed -i "s|PODINFO_NAMESPACE|NAMESPACE|" /srv/jupyterhub/jupyterhub_config.py
+
 echo "Done"
 echo ""
 
